@@ -6,11 +6,10 @@
   </head>
   <body>
 
-    @include('layouts._header')
+    @@include('name')
 
     <div class="container">
       @yield('content')
-      @include('layouts._footer')
     </div>
   </body>
 </html>

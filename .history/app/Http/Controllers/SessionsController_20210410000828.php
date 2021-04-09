@@ -19,7 +19,7 @@ class SessionsController extends Controller
 
         if(Auth::attempt($credentials, $request->has('remember'))) {
             // 认证通过
-            session()->flash('success', '欢迎回来!');
+            session()->flash('success', '欢迎回来');
             return redirect()->route('users.show', [Auth::user()]);
         } else {
             // 认证失败

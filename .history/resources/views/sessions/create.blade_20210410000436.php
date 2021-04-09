@@ -26,7 +26,7 @@
             <div class="form-group">
               <div class="form-check">
                 <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">记住我</label>
+                <label for="password">密码：</label>
               </div>
             </div>
 

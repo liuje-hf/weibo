@@ -5,11 +5,12 @@
       @if (Auth::check())
       <li class="nav-item"><a class="nav-link" href="#">用户列表</a></li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="flase">
           {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
+          <a class="drop-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
           <a class="dropdown-item" href="#">编辑资料</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="logout" href="#">
@@ -21,10 +22,12 @@
             </a>
         </div>
       </li>
-      @else
+
+      @endif
+      aaaaaaaaaaaaaaaaaaaaaa
       <li class="nav-item"><a class="nav-link" href="{{ route('help') }}">帮助</a></li>
       <li class="nav-item" ><a class="nav-link" href="{{ route('login') }}">登录</a></li>
-      @endif
+      bbbbbbbbbbbbbb
     </ul>
   </div>
 </nav>

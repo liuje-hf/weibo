@@ -52,7 +52,10 @@ class UsersController extends Controller
         $user->update($data);
 
         session()->flash('success', '个人资料更新成功');
-
-        return redirect()->route('users.show', $user);
+        $user->update([
+            'name' => $request->name,
+            'password' => bcrypt($request->password),
+        ]);
+        return redirect()->route('users.show', $user->id);
     }
 }

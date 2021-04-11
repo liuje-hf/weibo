@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
     public function __construct() {
+        echo 'dddd';
         $this->middleware('auth', [
             'except' => ['show', 'create', 'store']
         ]);
@@ -26,7 +27,7 @@ class UsersController extends Controller
 
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required|max:50',
+            'name' => 'required|unique:users|max:50',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|min:6'
         ]);

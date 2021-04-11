@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function __construct() {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['show']
         ]);
         $this->middleware('guest', [
             'only' => ['create']
@@ -26,7 +26,7 @@ class UsersController extends Controller
 
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required|max:50',
+            'name' => 'required|unique:users|max:50',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|min:6'
         ]);
@@ -61,7 +61,7 @@ class UsersController extends Controller
         }
         $user->update($data);
 
-        session()->flash('success', '个人资料更新成功！');
+        session()->flash('success', '个人资料更新成功!');
 
         return redirect()->route('users.show', $user);
     }

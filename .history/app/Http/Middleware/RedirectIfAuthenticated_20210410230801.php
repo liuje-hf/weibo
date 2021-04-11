@@ -6,7 +6,6 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\URL;
 
 class RedirectIfAuthenticated
 {
@@ -21,13 +20,10 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
+
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if ( URL::current() == route('login') ){
-                    session()->flash('info', '您已登录，无需再次操作！');
-                }elseif ( URL::current() == route('signup') ){
-                    session()->flash('info', '您已注册，无需再次操作！');
-                }
+                session()->flash('info', '您已登录，无需再次操作。');
                 return redirect(RouteServiceProvider::HOME);
             }
         }

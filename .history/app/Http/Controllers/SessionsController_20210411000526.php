@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
-    public function __construct() {
+    public function __contruct() {
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store']
+        ]);
         $this->middleware('guest', [
             'only' => ['create']
         ]);
@@ -31,7 +34,7 @@ class SessionsController extends Controller
             // 认证失败
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
             return redirect()->back()->withInput();
-        }
+        };
     }
 
     public function destroy() {

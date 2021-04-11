@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 
 class UsersController extends Controller
 {
     public function __construct() {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store', 'index', 'confirmEmail']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
         $this->middleware('guest', [
             'only' => ['create']

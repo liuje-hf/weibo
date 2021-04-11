@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Auth;
-use Mail;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     public function __construct() {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store', 'index', 'confirmEmail']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
         $this->middleware('guest', [
             'only' => ['create']
@@ -84,7 +83,8 @@ class UsersController extends Controller
         return back();
     }
 
-    protected function sendEmailConfirmationTo($user) {
+    protected function sendEmailConfirmationTo($user)
+    {
         $view = 'emails.confirm';
         $data = compact('user');
         $from = 'summer@example.com';
@@ -97,7 +97,8 @@ class UsersController extends Controller
         });
     }
 
-    public function confirmEmail($token) {
+    public function confirmEmail($token)
+    {
         $user = User::where('activation_token', $token)->firstOrFail();
 
         $user->activated = true;

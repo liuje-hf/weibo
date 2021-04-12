@@ -5,12 +5,12 @@
     <div class="row">
       <div class="col-md-8">
         <section class="status_form">
-          @include('shared._status_form')
+          @@include('shared._status_form')
         </section>
       </div>
-      <aside class="col-md-4">
-        <section class="user_info">
-          @include('shared._user_info', ['user' => Auth::user()])
+      <aside>
+        <section>
+          @@include('shared._user_info', '')
         </section>
       </aside>
     </div>

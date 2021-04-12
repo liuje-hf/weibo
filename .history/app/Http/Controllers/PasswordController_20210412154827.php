@@ -13,14 +13,9 @@ use Illuminate\Support\Str;
 
 class PasswordController extends Controller
 {
-    // 重置密码限流 ：一分钟内只能允许访问两次
     public function __construct() {
         $this->middleware('throttle:2,1', [
             'only' => ['showLinkRequestForm']
-        ]);
-        // 发送密码重置邮件，限流规则为 —— 10 分钟内只能尝试 3 次
-        $this->middleware('throttle:3,10', [
-            'only' => ['sendResetLinkEmail']
         ]);
     }
     public function showLinkRequestForm() {

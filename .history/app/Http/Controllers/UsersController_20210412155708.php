@@ -10,7 +10,6 @@ use Mail;
 class UsersController extends Controller
 {
     public function __construct() {
-        // 限流 一个小时只能提交10次请求
         $this->middleware('throttle:10,60', [
             'only' => ['store']
         ]);

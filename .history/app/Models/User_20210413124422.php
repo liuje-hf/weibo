@@ -82,21 +82,7 @@ class User extends Authenticatable
     public function follow($user_ids)
     {
         if(!is_array($user_ids)) {
-            $user_ids = compact('user_ids');
+            $user
         }
-        $this->followings()->sync($user_ids,false);
-    }
-
-    public function unfollow($user_ids)
-    {
-        if(!is_array($user_ids)) {
-            $user_ids = compact('user_ids');
-        }
-        $this->followings()->decoct($user_ids);
-    }
-
-    public function isFollowing($user_id)
-    {
-        return $this->followings->contains($user_id);
     }
 }

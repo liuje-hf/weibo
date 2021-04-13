@@ -1,4 +1,4 @@
-<a href="{{ route('users.followings', $user->id) }}">
+<a href="{{ route('users.following', $user->id) }}">
   <strong id="following" class="stat">
     {{ count($user->followings) }}
     关注

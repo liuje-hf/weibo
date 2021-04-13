@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class StatusesController extends Controller
 {
-    public function __construct()
+    public function __struct()
     {
         $this->middleware('auth');
     }
@@ -27,11 +26,8 @@ class StatusesController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(Status $status)
+    public function destroy(Type $var = null)
     {
-        $this->authorize('destroy', $status);
-        $status->delete();
-        session()->flash('success', '微博已被成功删除');
-        return redirect()->back();
+        # code...
     }
 }

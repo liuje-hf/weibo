@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class StatusesController extends Controller
 {
-    public function __construct()
+    public function __struct()
     {
         $this->middleware('auth');
     }
@@ -29,9 +29,7 @@ class StatusesController extends Controller
 
     public function destroy(Status $status)
     {
-        $this->authorize('destroy', $status);
-        $status->delete();
-        session()->flash('success', '微博已被成功删除');
-        return redirect()->back();
+        $this->authorize('destroy', Status);
+        
     }
 }

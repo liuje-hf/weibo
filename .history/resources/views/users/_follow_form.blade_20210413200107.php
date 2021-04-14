@@ -1,0 +1,3 @@
+@can('follow', $user)
+  
+@endcan

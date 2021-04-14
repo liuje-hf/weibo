@@ -17,7 +17,7 @@
     <section class="status">
       @if ($statuses->count() > 0)
           <ul class="list-unstyled">
-            @foreach ($statuses as $status)
+            @foreach ($statuses as $status){{ $status }}
               @include('statuses._status')
             @endforeach
           </ul>
